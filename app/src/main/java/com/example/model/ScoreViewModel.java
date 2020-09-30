@@ -1,22 +1,49 @@
 package com.example.model;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mydemo.MainActivity;
 
-public class ScoreViewModel extends ViewModel {
+//public class ScoreViewModel extends ViewModel {
+public class ScoreViewModel extends AndroidViewModel {
     //    private MutableLiveData<Integer> aScore;
 //    private MutableLiveData<Integer> bScore;
+    static final private String SP_STORE_NAME = "spStoreName";
     private int aScoreBack = DEFAULT_SCORE;
     private int bScoreBack = DEFAULT_SCORE;
     private SavedStateHandle stateHandle;
     final static private int DEFAULT_SCORE = 0;
+    private SharedPreferences sp;
 
-    public ScoreViewModel(SavedStateHandle stateHandle) {
+    public ScoreViewModel(@NonNull Application application, SavedStateHandle stateHandle) {
+        super(application);
         this.stateHandle = stateHandle;
 
+    }
+
+    //    public ScoreViewModel(SavedStateHandle stateHandle) {
+//        this.stateHandle = stateHandle;
+//    }
+    private SharedPreferences getSp() {
+        if (sp == null) {
+            sp = getApplication().getSharedPreferences(SP_STORE_NAME, Context.MODE_PRIVATE);
+        }
+        return sp;
+    }
+
+    public void save() {
+        SharedPreferences.Editor editor = getSp().edit();
+        editor.putInt(MainActivity.KEY_A_SCORE, getAScore().getValue());
+        editor.putInt(MainActivity.KEY_B_SCORE, getBScore().getValue());
+        editor.apply();
     }
 
     public MutableLiveData<Integer> getAScore() {
@@ -26,7 +53,7 @@ public class ScoreViewModel extends ViewModel {
 //        }
 //        return aScore;
         if (!stateHandle.contains(MainActivity.KEY_A_SCORE)) {
-            stateHandle.set(MainActivity.KEY_A_SCORE, DEFAULT_SCORE);
+            stateHandle.set(MainActivity.KEY_A_SCORE, getSp().getInt(MainActivity.KEY_A_SCORE, DEFAULT_SCORE));
         }
         return stateHandle.getLiveData(MainActivity.KEY_A_SCORE);
     }
@@ -37,10 +64,10 @@ public class ScoreViewModel extends ViewModel {
 //            bScore.setValue(0);
 //        }
 //        return bScore;
-
         if (!stateHandle.contains(MainActivity.KEY_B_SCORE)) {
-            stateHandle.set(MainActivity.KEY_B_SCORE, DEFAULT_SCORE);
+            stateHandle.set(MainActivity.KEY_B_SCORE, getSp().getInt(MainActivity.KEY_B_SCORE, DEFAULT_SCORE));
         }
+
         return stateHandle.getLiveData(MainActivity.KEY_B_SCORE);
     }
 

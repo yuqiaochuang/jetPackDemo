@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        scoreViewModel.save();
+        super.onPause();
+    }
+
 //    @Override
 //    protected void onSaveInstanceState(@NonNull Bundle outState) {
 //        super.onSaveInstanceState(outState);

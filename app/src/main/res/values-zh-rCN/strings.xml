@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">我的示例</string>
+    <string name="bTeam">B队</string>
+    <string name="aTeam">A队</string>
+    <string name="undo">撤销</string>
+    <string name="reset">重置</string>
+</resources>

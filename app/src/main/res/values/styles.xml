@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="btnStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">
+            @dimen/marginHorizontal
+        </item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">@dimen/marginVertical
+        </item>
+        <item name="android:background">@color/bColor</item>
+        <item name="android:textColor">@color/aTxtColor</item>
+        <item name="android:textSize">@dimen/buttonTxtSize</item>
+    </style>
+
+    <style name="aBtnStyle" parent="btnStyle">
+        <item name="android:background">@color/aColor</item>
+    </style>
+
+    <style name="bBtnStyle" parent="btnStyle">
+        <item name="android:background">@color/bColor</item>
+    </style>
+
+
+    <style name="aBtnLandStyle" parent="aBtnStyle">
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">
+            @dimen/marginHorizontalLand
+        </item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">@dimen/marginVerticalLand
+        </item>
+    </style>
+
+    <style name="bBtnLandStyle" parent="bBtnStyle">
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">
+            @dimen/marginHorizontalLand
+        </item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">@dimen/marginVerticalLand
+        </item>
+    </style>
+</resources>

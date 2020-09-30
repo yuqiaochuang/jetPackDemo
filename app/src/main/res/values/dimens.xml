@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titleSize">16sp</dimen>
+    <dimen name="scoreSize">30sp</dimen>
+    <dimen name="buttonTxtSize">20sp</dimen>
+
+    <dimen name="normalPadding">8dp</dimen>
+    <dimen name="marginVertical">16dp</dimen>
+    <dimen name="marginVerticalLand">8dp</dimen>
+    <dimen name="marginHorizontal">16dp</dimen>
+    <dimen name="marginHorizontalLand">16dp</dimen>
+</resources>

@@ -1,49 +1,44 @@
 package com.example.mydemo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.SavedStateViewModelFactory;
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.model.ScoreViewModel;
-import com.example.mydemo.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    ScoreViewModel scoreViewModel;
-    ActivityMainBinding mainBinding;
-    final static public String KEY_A_SCORE = "aScore";
-    final static public String KEY_B_SCORE = "bScore";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-//        scoreViewModel = new ViewModelProvider(this,
-//                new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(ScoreViewModel.class);
-//        if (savedInstanceState != null) {
-//            scoreViewModel.getAScore().setValue(savedInstanceState.getInt(KEY_A_SCORE, 0));
-//            scoreViewModel.getBScore().setValue(savedInstanceState.getInt(KEY_B_SCORE, 0));
-//        }
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        scoreViewModel = new ViewModelProvider(this, new SavedStateViewModelFactory(getApplication(), this)).get(ScoreViewModel.class);
-        mainBinding.setModel(scoreViewModel);
-        mainBinding.setLifecycleOwner(this);
-
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this, ScoreActivity.class));
+            }
+        });
+        NavController navController = Navigation.findNavController(MainActivity.this, R.id.fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController);
     }
 
     @Override
-    protected void onPause() {
-        scoreViewModel.save();
-        super.onPause();
+    public boolean onSupportNavigateUp() {
+//        return super.onSupportNavigateUp();
+        return Navigation.findNavController(MainActivity.this, R.id.fragment).navigateUp();
     }
-
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putInt(KEY_A_SCORE, scoreViewModel.getAScore().getValue());
-//        outState.putInt(KEY_B_SCORE, scoreViewModel.getBScore().getValue());
-//    }
 }

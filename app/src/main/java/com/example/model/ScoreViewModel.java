@@ -8,9 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
-import androidx.lifecycle.ViewModel;
 
-import com.example.mydemo.MainActivity;
+import com.example.mydemo.ScoreActivity;
 
 //public class ScoreViewModel extends ViewModel {
 public class ScoreViewModel extends AndroidViewModel {
@@ -41,8 +40,8 @@ public class ScoreViewModel extends AndroidViewModel {
 
     public void save() {
         SharedPreferences.Editor editor = getSp().edit();
-        editor.putInt(MainActivity.KEY_A_SCORE, getAScore().getValue());
-        editor.putInt(MainActivity.KEY_B_SCORE, getBScore().getValue());
+        editor.putInt(ScoreActivity.KEY_A_SCORE, getAScore().getValue());
+        editor.putInt(ScoreActivity.KEY_B_SCORE, getBScore().getValue());
         editor.apply();
     }
 
@@ -52,10 +51,10 @@ public class ScoreViewModel extends AndroidViewModel {
 //            aScore.setValue(0);
 //        }
 //        return aScore;
-        if (!stateHandle.contains(MainActivity.KEY_A_SCORE)) {
-            stateHandle.set(MainActivity.KEY_A_SCORE, getSp().getInt(MainActivity.KEY_A_SCORE, DEFAULT_SCORE));
+        if (!stateHandle.contains(ScoreActivity.KEY_A_SCORE)) {
+            stateHandle.set(ScoreActivity.KEY_A_SCORE, getSp().getInt(ScoreActivity.KEY_A_SCORE, DEFAULT_SCORE));
         }
-        return stateHandle.getLiveData(MainActivity.KEY_A_SCORE);
+        return stateHandle.getLiveData(ScoreActivity.KEY_A_SCORE);
     }
 
     public MutableLiveData<Integer> getBScore() {
@@ -64,11 +63,11 @@ public class ScoreViewModel extends AndroidViewModel {
 //            bScore.setValue(0);
 //        }
 //        return bScore;
-        if (!stateHandle.contains(MainActivity.KEY_B_SCORE)) {
-            stateHandle.set(MainActivity.KEY_B_SCORE, getSp().getInt(MainActivity.KEY_B_SCORE, DEFAULT_SCORE));
+        if (!stateHandle.contains(ScoreActivity.KEY_B_SCORE)) {
+            stateHandle.set(ScoreActivity.KEY_B_SCORE, getSp().getInt(ScoreActivity.KEY_B_SCORE, DEFAULT_SCORE));
         }
 
-        return stateHandle.getLiveData(MainActivity.KEY_B_SCORE);
+        return stateHandle.getLiveData(ScoreActivity.KEY_B_SCORE);
     }
 
     private void saveOldScore() {

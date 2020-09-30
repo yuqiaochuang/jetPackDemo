@@ -9,4 +9,5 @@
     <dimen name="marginVerticalLand">8dp</dimen>
     <dimen name="marginHorizontal">16dp</dimen>
     <dimen name="marginHorizontalLand">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

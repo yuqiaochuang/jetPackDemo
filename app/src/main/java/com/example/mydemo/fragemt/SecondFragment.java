@@ -34,6 +34,11 @@ public class SecondFragment extends Fragment {
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
-        ((TextView) (view.findViewById(R.id.textview_second))).setText(getString(R.string.hello_second_fragment, "hhhhhhh"));
+        String arg=getArguments().getString("name");
+        String arg2=getArguments().getString("name2");
+        String arg3=getArguments().getString("name3");
+        ((TextView) (view.findViewById(R.id.textview_second))).setText(getString(R.string.hello_second_fragment, arg));
+        ((TextView) (view.findViewById(R.id.textView2))).setText(getString(R.string.hello_second_fragment, arg2));
+        ((TextView) (view.findViewById(R.id.textView3))).setText(getString(R.string.hello_second_fragment, arg3));
     }
 }

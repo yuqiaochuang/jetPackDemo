@@ -17,7 +17,11 @@
             app:enterAnim="@anim/fragment_close_enter"
             app:exitAnim="@anim/fragment_close_exit"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" >
+            <argument
+                android:name="name"
+                android:defaultValue="kkkk" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -28,5 +32,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="nihao " />
     </fragment>
 </navigation>

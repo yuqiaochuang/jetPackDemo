@@ -26,7 +26,9 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        fIndexModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(FIndexModel.class);
+
+        fIndexModel = new ViewModelProvider(getActivity(), //关键是这个参数
+                new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(FIndexModel.class);
         mainBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false);
         mainBinding.setModel(fIndexModel);
         mainBinding.setLifecycleOwner(getActivity());
